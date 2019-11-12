@@ -1,0 +1,32 @@
+.heading {
+  background-color: #542c85;
+  color: #fff;
+  text-align: center;
+  font-size: 65px;
+  padding: 40px 0;
+}
+
+.title {
+  color: #542c85;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 30px;
+}
+
+.desc {
+  margin-top: 20px;
+  font-size: 1rem;
+}
+.desc p:first-child {
+  margin-bottom: 10px;
+}
+.more-link {
+  text-decoration: none;
+  color: #000;
+  margin-top: 10px;
+  font-size: .9rem;
+  font-weight: 800;
+}
+.more-link:hover {
+  color: #542c85;
+}

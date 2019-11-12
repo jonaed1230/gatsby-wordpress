@@ -1,21 +1,60 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { Component } from "react"
+import { Link, graphql } from "gatsby"
+import "./index.css";
+import Layout from './layout'
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+class Homepage extends Component {
+  render() {
+    const data = this.props.data
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+    return (
+      <Layout>
+        <div>
+          <h1 className="heading">Gatsby.js + Wordpress</h1>
+          {data.allWordpressPage.edges.map(({ node }) => (
+            <div key={node.slug}>
+              <Link to={node.slug} className="title">
+                {node.title}
+              </Link>
+              <div dangerouslySetInnerHTML={{__html: node.excerpt}} className="desc" />
+            </div>
+          ))}
+        </div>
+        {data.allWordpressPost.edges.map(({ node }) => (
+          <div key={node.slug}>
+            <Link to={node.slug} className="title">
+              {node.title}
+            </Link>
+            <div dangerouslySetInnerHTML={{__html: node.excerpt}} className="desc" />
+          </div>
+        ))}
+      </Layout>
+    )
+  }
+}
 
-export default IndexPage
+export default Homepage
+
+export const pageQuery = graphql`
+  query {
+    allWordpressPage {
+      edges {
+        node {
+          id
+          title
+          excerpt
+          slug
+        }
+      }
+    }
+    allWordpressPost {
+      edges {
+        node {
+          title
+          excerpt
+          slug
+        }
+      }
+    }
+  }
+`
