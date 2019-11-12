@@ -34,9 +34,9 @@ const Layout = ({ children }) => {
       >
         <main>{children}</main>
         <footer>
-          © {new Date().getFullYear()}, Built with
+          © {new Date().getFullYear()}, Made in Bangladesh  by
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <a href="https://github.com/jonaed1230">Md. Jonaed Hasan</a>
         </footer>
       </div>
     </>

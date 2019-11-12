@@ -9,13 +9,15 @@
   padding: 40px 0;
 }
 
-.title {
+.post-title {
   color: #542c85;
   font-family: 'Montserrat', sans-serif;
   text-decoration: none;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 30px;
 }
+
+
 
 .desc {
   font-family: 'Montserrat', sans-serif;
@@ -23,13 +25,19 @@
   font-size: .8rem;
   margin-bottom: 45px;
 }
-.desc p:first-child {
-  margin-bottom: 10px;
-}
-.more-link {
-  text-decoration: none;
+.desc a {
+  position: relative;
+  text-decoration: underline;
   color: #000;
-  margin-top: 10px;
-  font-size: .7rem;
-  font-weight: 800;
+}
+.desc a:hover {
+  text-decoration: none;
+}
+.desc a:hover::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  margin-top: 22px;
+  height: 3px;
+  background-color: #000;
 }

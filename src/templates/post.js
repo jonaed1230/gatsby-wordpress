@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
 import PropTypes from "prop-types"
+import Layout from '../pages/layout'
+import "./template.css"
 
 class Post extends Component {
   render() {
@@ -8,10 +10,11 @@ class Post extends Component {
     console.log(post);
 
     return (
-      <>
-        <h1>{post.title}</h1>
-        <div dangerouslySetInnerHTML={{__html: post.content}} />
-      </>
+      <Layout>
+        <h1 className="heading">Gatsby.js + Wordpress</h1>
+        <h1 className="post-title">{post.title}</h1>
+        <div className="desc" dangerouslySetInnerHTML={{__html: post.content}} />
+      </Layout>
     )
   }
 }
