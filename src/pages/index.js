@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Link, graphql } from "gatsby"
-import "./index.css";
-import Layout from './layout'
+import "./index.css"
+import Layout from "./layout"
 
 class Homepage extends Component {
   render() {
@@ -11,23 +11,31 @@ class Homepage extends Component {
       <Layout>
         <div>
           <h1 className="heading">Gatsby.js + Wordpress</h1>
-          {data.allWordpressPage.edges.map(({ node }) => (
+          <div className="content">
+            {data.allWordpressPage.edges.map(({ node }) => (
+              <div key={node.slug}>
+                <Link to={node.slug} className="title">
+                  {node.title}
+                </Link>
+                <div
+                  dangerouslySetInnerHTML={{ __html: node.excerpt }}
+                  className="desc"
+                />
+              </div>
+            ))}
+          </div>
+          {data.allWordpressPost.edges.map(({ node }) => (
             <div key={node.slug}>
               <Link to={node.slug} className="title">
                 {node.title}
               </Link>
-              <div dangerouslySetInnerHTML={{__html: node.excerpt}} className="desc" />
+              <div
+                dangerouslySetInnerHTML={{ __html: node.excerpt }}
+                className="desc"
+              />
             </div>
           ))}
         </div>
-        {data.allWordpressPost.edges.map(({ node }) => (
-          <div key={node.slug}>
-            <Link to={node.slug} className="title">
-              {node.title}
-            </Link>
-            <div dangerouslySetInnerHTML={{__html: node.excerpt}} className="desc" />
-          </div>
-        ))}
       </Layout>
     )
   }

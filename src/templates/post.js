@@ -1,19 +1,24 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
 import PropTypes from "prop-types"
-import Layout from '../pages/layout'
+import Layout from "../pages/layout"
 import "./template.css"
 
 class Post extends Component {
   render() {
     const post = this.props.data.wordpressPost
-    console.log(post);
+    console.log(post)
 
     return (
       <Layout>
         <h1 className="heading">Gatsby.js + Wordpress</h1>
-        <h1 className="post-title">{post.title}</h1>
-        <div className="desc" dangerouslySetInnerHTML={{__html: post.content}} />
+        <div className="content">
+          <h1 className="post-title">{post.title}</h1>
+          <div
+            className="desc"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        </div>
       </Layout>
     )
   }
